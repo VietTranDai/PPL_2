@@ -1,1 +1,1 @@
-Program([FuncDecl(foo,[],VoidType,Block([If(Id(a),Block([Return()])),If(Id(b),Block([Return()]),Block([Return()]))]))])
+Program([ConstDecl(a,BinaryOp(BinaryOp(IntLiteral(1),&&,IntLiteral(2)),||,BinaryOp(IntLiteral(3),>=,BinaryOp(IntLiteral(4),+,BinaryOp(IntLiteral(5),*,UnaryOp(-,IntLiteral(6)))))))])

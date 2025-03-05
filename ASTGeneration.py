@@ -472,7 +472,8 @@ class ASTGeneration(MiniGoVisitor):
             return BooleanLiteral(False)
         elif ctx.STRINGLIT():
             txt = ctx.STRINGLIT().getText()
-            return StringLiteral(txt[1:-1])
+            # return StringLiteral(txt[1:-1])
+            return StringLiteral(txt)
         elif ctx.NIL():
             return NilLiteral()
         return None
