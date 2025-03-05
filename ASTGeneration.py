@@ -455,25 +455,24 @@ class ASTGeneration(MiniGoVisitor):
         # Visit a literal: 'INT | FLOAT | TRUE | FALSE | STRINGLIT | NIL'.
     def visitLiteral(self, ctx: MiniGoParser.LiteralContext):
         if ctx.INT():
-            int_text = ctx.INT().getText().lower()
-            if int_text.startswith('0b'):
-                return IntLiteral(int(int_text[2:], 2))
-            elif int_text.startswith('0o'):
-                return IntLiteral(int(int_text[2:], 8))
-            elif int_text.startswith('0x'):
-                return IntLiteral(int(int_text[2:], 16))
-            else:
-                return IntLiteral(int(int_text))
+            # int_text = ctx.INT().getText().lower()
+            # if int_text.startswith('0b'):
+            #     return IntLiteral(int(int_text[2:], 2))
+            # elif int_text.startswith('0o'):
+            #     return IntLiteral(int(int_text[2:], 8))
+            # elif int_text.startswith('0x'):
+            #     return IntLiteral(int(int_text[2:], 16))
+            # else:
+            #     return IntLiteral(int(int_text))
+            return IntLiteral(ctx.INT().getText())
         elif ctx.FLOAT():
-            return FloatLiteral(float(ctx.FLOAT().getText()))
+            return FloatLiteral(ctx.FLOAT().getText())
         elif ctx.TRUE():
-            return BooleanLiteral(True)
+            return BooleanLiteral(ctx.TRUE().getText())
         elif ctx.FALSE():
-            return BooleanLiteral(False)
+            return BooleanLiteral(ctx.FALSE().getText())
         elif ctx.STRINGLIT():
-            txt = ctx.STRINGLIT().getText()
-            # return StringLiteral(txt[1:-1])
-            return StringLiteral(txt)
+            return StringLiteral(ctx.STRINGLIT().getText())
         elif ctx.NIL():
             return NilLiteral()
         return None
