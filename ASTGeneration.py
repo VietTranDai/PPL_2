@@ -520,7 +520,7 @@ class ASTGeneration(MiniGoVisitor):
             if ctx.literal():
                 return self.visit(ctx.literal())
             elif ctx.IDENTIFIER():
-                return Id(ctx.IDENTIFIER().getText())
+                return Id(ctx.IDENTIFIER(0).getText())
             elif ctx.arrayLiteral():
                 return self.visit(ctx.arrayLiteral())
             elif ctx.structCompositeLiteral():
